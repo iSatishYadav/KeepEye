@@ -1,0 +1,47 @@
+﻿@model IEnumerable<KeepEye.Models.ResourceReportModel>
+
+@{
+    ViewBag.Title = "Each";
+}
+
+<h2>Server-wise RPO</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ResourceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessThanOne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OneToFive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FiveToTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GreaterThanTen)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResourceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessThanOne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OneToFive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FiveToTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GreaterThanTen)
+        </td>
+    </tr>
+}
+
+</table>

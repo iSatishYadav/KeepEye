@@ -1,0 +1,37 @@
+﻿@model List<KeepEye.Models.JsonData>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor( x => Model.First().Response.Result.First().ResourceName)</th>
+        <th>@Html.DisplayNameFor(x => Model.First().Response.Result.First().RawData.First().DateTime)</th>
+        <th>@Html.DisplayNameFor(x => Model.First().Response.Result.First().RawData.First().Value)</th>        
+    </tr>
+
+
+    @{
+        var result = Model.First().Response.Result.First();
+        var rawData = result.RawData.ToList(); 
+        for (int i = 0; i < rawData.Count; i++)
+        {
+            var current = rawData[i];
+            <tr>
+                <td>
+                    @Html.DisplayFor( x => result.ResourceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => current.DateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => current.Value)
+                </td>            
+            </tr>
+        }
+    }
+
+</table>

@@ -1,0 +1,36 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Dynamic";
+}
+
+<h2>Dynamic</h2>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayName("Resource Name")</th>
+        <th>@Html.DisplayName("Date Time")</th>
+        <th>@Html.DisplayName("Value")</th>
+    </tr>
+
+
+    @{
+        dynamic result = Model.First().Response.Result.First();
+        dynamic rawData = result.RawData.ToList();
+        for (int i = 0; i < rawData.Count; i++)
+        {
+            dynamic current = rawData[i];
+            <tr>
+                <td>
+                   @result.ResourceName
+                </td>
+                <td>
+                    @current.DateTime
+                </td>
+                <td>
+                    @current.Value
+                </td>
+            </tr>
+        }
+    }
+
+</table>
